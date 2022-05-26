@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aivanyan <aivanyan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aivanyan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 03:00:34 by aivanyan          #+#    #+#             */
-/*   Updated: 2022/05/26 19:13:22 by aivanyan         ###   ########.fr       */
+/*   Updated: 2022/05/27 01:35:56 by aivanyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,4 +73,38 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	}
 	join[i] = '\0';
 	return (join);
+}
+
+void	*ft_memcpy(void *dest, const void *src, size_t n)
+{
+	char	*src_temp;
+	char	*dest_temp;
+	size_t	i;
+
+	src_temp = (char *)src;
+	dest_temp = (char *)dest;
+	i = 0;
+	while (i < n)
+	{
+		dest_temp[i] = src_temp[i];
+		i++;
+	}
+	return (dest_temp);
+}
+
+char	*ft_substr(char const *s, unsigned int start, size_t len)
+{
+	char	*substr;
+	size_t	size;
+
+	size = ft_strlen(s);
+	if (size < len)
+		len = size;
+	if (start >= size)
+		len = 0;
+	substr = malloc(len + 1);
+	if (substr == NULL)
+		return (NULL);
+	substr[len] = '\0';
+	return (ft_memcpy(substr, s + start, len));
 }
