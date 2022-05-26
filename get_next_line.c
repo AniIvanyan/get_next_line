@@ -6,7 +6,7 @@
 /*   By: aivanyan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 03:00:22 by aivanyan          #+#    #+#             */
-/*   Updated: 2022/05/27 02:50:10 by aivanyan         ###   ########.fr       */
+/*   Updated: 2022/05/27 03:23:49 by aivanyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ char	*ft_update_stash(char **stash)
 
 char	*get_next_line(int fd)
 {
-	char		buffer[BUFFER_SIZE + 1]; 
+	char		*buffer; 
 	char		*temp;
 	static char	*stash;
 	ssize_t		read_return;
@@ -58,11 +58,15 @@ char	*get_next_line(int fd)
 	if (fd < 0 || BUFFER_SIZE < 1)
 		return (NULL);
 	read_return = 1;
+	buffer = malloc((BUFFER_SIZE + 1) * sizeof(char));
 	while (read_return > 0)
 	{
 		read_return = read(fd, buffer, BUFFER_SIZE);
 		if (read_return < 0)
+		{
+			free(buffer);
 			return (NULL);
+		}
 		buffer[read_return] = '\0';
 		temp = ft_strjoin(stash, buffer);
 		free(stash);
@@ -70,12 +74,7 @@ char	*get_next_line(int fd)
 		if (ft_strchr(stash, '\n'))
 			break ;
 	}
+	free(buffer);
 	return (ft_update_stash(&stash));
 }
 
-int main()
-{
-	int fd = open("text.txt", O_RDONLY);
-	printf("%s",get_next_line(fd));
-	printf("%s",get_next_line(fd));
-}
