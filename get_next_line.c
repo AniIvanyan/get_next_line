@@ -6,7 +6,7 @@
 /*   By: aivanyan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 03:00:22 by aivanyan          #+#    #+#             */
-/*   Updated: 2022/05/27 03:23:49 by aivanyan         ###   ########.fr       */
+/*   Updated: 2022/05/27 17:18:06 by aivanyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ char	*ft_update_stash(char **stash)
 	char	*temp;
 	char	*return_line;
 
-	if (!(*stash))
+	if (!(*stash) || !(**stash))
 		return (NULL);
 	return_line = ft_get_return_line(*stash);
 	new_line = ft_strchr(*stash, '\n');
@@ -77,4 +77,3 @@ char	*get_next_line(int fd)
 	free(buffer);
 	return (ft_update_stash(&stash));
 }
-
