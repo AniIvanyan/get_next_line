@@ -6,7 +6,7 @@
 /*   By: aivanyan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 03:00:22 by aivanyan          #+#    #+#             */
-/*   Updated: 2022/05/27 17:18:06 by aivanyan         ###   ########.fr       */
+/*   Updated: 2022/05/27 19:40:09 by aivanyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 char	*ft_get_return_line(char *stash)
 {
 	char	*new_line;
-	
+
 	if (!stash)
 		return (NULL);
 	new_line = ft_strchr(stash, '\n');
@@ -50,7 +50,7 @@ char	*ft_update_stash(char **stash)
 
 char	*get_next_line(int fd)
 {
-	char		*buffer; 
+	char		*buffer;
 	char		*temp;
 	static char	*stash;
 	ssize_t		read_return;
@@ -63,10 +63,9 @@ char	*get_next_line(int fd)
 	{
 		read_return = read(fd, buffer, BUFFER_SIZE);
 		if (read_return < 0)
-		{
 			free(buffer);
+		if (read_return < 0)
 			return (NULL);
-		}
 		buffer[read_return] = '\0';
 		temp = ft_strjoin(stash, buffer);
 		free(stash);

@@ -6,7 +6,7 @@
 /*   By: aivanyan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 03:00:34 by aivanyan          #+#    #+#             */
-/*   Updated: 2022/05/27 01:35:56 by aivanyan         ###   ########.fr       */
+/*   Updated: 2022/05/27 17:57:27 by aivanyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*ft_strchr(const char *s, int c)
 
 	i = 1;
 	locate = NULL;
-	while (*s)
+	while (s && *s)
 	{
 		if (*s == (char)c)
 		{
