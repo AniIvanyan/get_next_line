@@ -6,7 +6,7 @@
 /*   By: aivanyan <aivanyan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 03:00:22 by aivanyan          #+#    #+#             */
-/*   Updated: 2022/06/02 14:36:28 by aivanyan         ###   ########.fr       */
+/*   Updated: 2022/06/02 19:55:16 by aivanyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,18 +30,10 @@ char	*ft_update_stash(char **stash)
 	char	*temp;
 	char	*return_line;
 
-	// if(!(*stash) || !(**stash))
-	// {
-	// 	free(*stash);
-	// 	return (NULL);
-	// }
-	if (!(*stash))
-		return (NULL);
 	if (!(**stash))
 	{
-		temp = *stash;
+		free(*stash);
 		*stash = NULL;
-		free(temp);
 		return (NULL);
 	}
 	return_line = ft_get_return_line(*stash);
@@ -70,7 +62,6 @@ char	*get_next_line(int fd)
 	if (fd < 0 || BUFFER_SIZE < 1)
 		return (NULL);
 	buffer = malloc((BUFFER_SIZE + 1) * sizeof(char));
-	//read_return = read(fd, buffer, BUFFER_SIZE);
 	read_return = 1;
 	while (read_return > 0)
 	{

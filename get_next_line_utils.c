@@ -6,7 +6,7 @@
 /*   By: aivanyan <aivanyan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 03:00:34 by aivanyan          #+#    #+#             */
-/*   Updated: 2022/06/02 14:27:53 by aivanyan         ###   ########.fr       */
+/*   Updated: 2022/06/02 19:24:26 by aivanyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	int		i;
 
 	join = malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char));
-	//printf("pointer allocated at %p\n", join);
 	if (join == NULL)
 		return (NULL);
 	i = 0;
